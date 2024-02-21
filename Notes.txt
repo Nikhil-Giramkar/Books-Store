@@ -102,6 +102,11 @@ Data Returned:
     }
   }
 }
+--------------------------------------------------------------------------
+Changing data type of Id prop from string to GraphQLID
+Even though, our dummy data has string Ids
+This will still work because,
+When we get args.id from UI, it is taken as string in Javascript
 
 
 

@@ -1,7 +1,11 @@
 const graphql = require("graphql")
 _ = require("lodash")
 
-const {GraphQLObjectType, GraphQLString, GraphQLSchema} = graphql
+const {
+    GraphQLObjectType, 
+    GraphQLString, 
+    GraphQLSchema,
+    GraphQLID} = graphql
 
 //Dummy Data
 var books = [
@@ -19,7 +23,7 @@ var books = [
 const BookType = new GraphQLObjectType({
     name: "Book",
     fields: () => ({ //We ned to wrap all props of the obeject in function called fields
-        id: {type: GraphQLString},
+        id: {type: GraphQLID},
         name: {type: GraphQLString},
         genre: {type: GraphQLString}
     })
@@ -36,7 +40,7 @@ const RootQuery = new GraphQLObjectType({
     fields: {
         book: {
             type: BookType,
-            args: {id: {type: GraphQLString}}, //When user tries to access a particular book, he must pass the Id along it
+            args: {id: {type: GraphQLID}}, //When user tries to access a particular book, he must pass the Id along it
             resolve(parent, args){
                 //Below code will fetch a book based on Id
                 //Lodash helps in writing minimal code
