@@ -57,3 +57,6 @@ We see an error on visiting : http://localhost:4000/graphql
 
 Hence, we need to define structure of our data before beginning to query via GraphQL.
 --------------------------------------------------------------------------
+
+So we will define the Schema for GraphQL queries
+First for Book 
