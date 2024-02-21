@@ -1,0 +1,44 @@
+GraphQL
+----------
+A query language for communication betwen client and server
+It allows more flexible approach than REST
+
+Suppose, you have a Book Store
+In your DB, you have two tables
+
+Books - title, genre, reviews, authorId
+Author - name, age, bio, booksId
+
+If for an instance, 
+I need to find the author of a book based on Book Id provided by user.
+After that, I need to fetch all books written by that author.
+
+In normal REST Architecture, I will need to do multiple queries
+1. Get AuthorId from BookId
+2. Get each book's details iteratively written by that author 
+(The author might have written N books, 
+So I need to make N queries to fetch details of all books)
+
+But in GraphQL, we can do all above tasks in a single query
+
+{
+    book(id:123)
+    {
+        title
+        genre
+        reviews
+        author {
+            name
+            bio
+            books {
+                name
+            }
+        }
+    }
+}
+Here, I fetched names of all books written by the Author,
+Who was fetched from Book ID provided.
+--------------------------------------------------------------------------
+
+Do the initial Express Setup
+install express, nodemon
