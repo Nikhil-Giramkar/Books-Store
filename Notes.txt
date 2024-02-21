@@ -60,3 +60,9 @@ Hence, we need to define structure of our data before beginning to query via Gra
 
 So we will define the Schema for GraphQL queries
 First for Book 
+
+1. Defined Structure for Book Type
+2. Wrapped BookType in RootQueey and made it accessible via id
+3. Exported RootType from schema.JS
+4. Imported schema in app.js
+5. Added schema used in middleware

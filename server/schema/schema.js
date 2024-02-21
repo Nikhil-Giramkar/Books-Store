@@ -1,10 +1,11 @@
 const graphql = require("graphql")
 
-const {GraphQLObjectType, GraphQLString} = graphql
+const {GraphQLObjectType, GraphQLString, GraphQLSchema} = graphql
 //We will have two object types
 //Books and Authors
 //We also need to define relation between them and how to query data
 
+//Creating Structure for Book
 const BookType = new GraphQLObjectType({
     name: "Book",
     fields: () => ({ //We ned to wrap all props of the obeject in function called fields
@@ -12,4 +13,31 @@ const BookType = new GraphQLObjectType({
         name: {type: GraphQLString},
         genre: {type: GraphQLString}
     })
+})
+
+//We need to define the entry point for user in using GraphQL query
+//User can try to access Book via Id or the Author as well
+//So we define the start points which user can pick, Book or Author based on what he wants to fetch
+//To wrap these start points we define a Root Query
+
+//Wrapping all defined structures above in RootQuery
+const RootQuery = new GraphQLObjectType({
+    name: "RootQueryType",
+    fields: {
+        book: {
+            type: BookType,
+            args: {id: {type: GraphQLString}}, //When user tries to access a particular book, he must pass the Id along it
+            resolve(parent, args){
+                //In this func we define code  
+                //for what data do we need to get from DB
+            }
+        }
+
+    }
+})
+
+//We need to export the schema 
+//Exporting RootType to outer world, to access graphQL
+module.exports = new GraphQLSchema({
+    query: RootQuery
 })
