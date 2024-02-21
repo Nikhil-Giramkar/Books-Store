@@ -42,3 +42,18 @@ Who was fetched from Book ID provided.
 
 Do the initial Express Setup
 install express, nodemon
+
+To work with GraphQL in node.js
+We need to install packages
+    npm install graphql express-graphql
+
+graphql package in JS implementation of GraphQL
+express-graphql helps express app interact with GraphQL
+
+On running app with this added code
+We see an error on visiting : http://localhost:4000/graphql
+
+    "message": "GraphQL middleware options must contain a schema."
+
+Hence, we need to define structure of our data before beginning to query via GraphQL.
+--------------------------------------------------------------------------
