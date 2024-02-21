@@ -76,3 +76,32 @@ In resolve()
     which does the job without writing excess code
 
     npm install lodash
+--------------------------------------------------------------------------
+
+Now we have our schema nad dummy data ready.
+How to test these via GraphQL?
+By setting->  graphiql: true in middleware 
+and visit the endpoint again.
+
+There we see a documentation explorer, which shows the structure of our schema
+
+Tested query :
+{
+  book(id:"1"){
+    name
+    genre
+  }
+}
+-----------------
+Data Returned:
+{
+  "data": {
+    "book": {
+      "name": "IronMan",
+      "genre": "Sci-Fi"
+    }
+  }
+}
+
+
+
