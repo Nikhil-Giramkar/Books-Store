@@ -45,7 +45,7 @@ install express, nodemon
 
 To work with GraphQL in node.js
 We need to install packages
-    npm install graphql express-graphql
+    npm install express express-graphql graphql --save
 
 graphql package in JS implementation of GraphQL
 express-graphql helps express app interact with GraphQL
@@ -66,3 +66,13 @@ First for Book
 3. Exported RootType from schema.JS
 4. Imported schema in app.js
 5. Added schema used in middleware
+--------------------------------------------------------------------------
+Create dummy data
+
+In resolve()
+    Here we write code for fetching book from the ID
+    We can use Vanilla JS code
+    But there is a utility called lodash, 
+    which does the job without writing excess code
+
+    npm install lodash
