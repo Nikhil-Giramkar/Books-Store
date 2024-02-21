@@ -10,9 +10,9 @@ const {
 
 //Dummy Data
 var books = [
-    {id:"1", name:"IronMan", genre: "Sci-Fi"},
-    {id:"2", name:"Cindrella", genre: "Fantasy"},
-    {id:"3", name:"Finding Nemo", genre: "Fantasy"},
+    {id:"1", name:"IronMan", genre: "Sci-Fi", authorId: "1"},
+    {id:"2", name:"Cindrella", genre: "Fantasy", authorId: "2"},
+    {id:"3", name:"Finding Nemo", genre: "Fantasy", authorId: "3"},
 ]
 
 var authors = [
@@ -32,7 +32,16 @@ const BookType = new GraphQLObjectType({
     fields: () => ({ //We ned to wrap all props of the obeject in function called fields
         id: {type: GraphQLID},
         name: {type: GraphQLString},
-        genre: {type: GraphQLString}
+        genre: {type: GraphQLString},
+
+        author: {
+            type: AuthorType,
+            resolve(parent, args){
+                console.log(parent); //Here parent is Book
+                return _.find(authors, {id: parent.authorId})
+                //Return author details based on authorId
+            }
+        }
     })
 })
 
