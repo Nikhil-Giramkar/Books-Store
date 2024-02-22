@@ -143,6 +143,15 @@ Lets connect to MongoDB
   Create a file which does DB Connection and once done 
   Start listening at PORT
   Put the Port No in config.env file as well.
+--------------------------------------------------------------------------
+
+Create Models for Book And author
+Which will act as Collections in MongoDBAtlas
+
+Define schema for Book and Author and export them.
+Delete dummy data amd comment out resolve logic for all.
+
+Import models in schema.js 
 
 
 
