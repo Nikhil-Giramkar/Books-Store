@@ -129,5 +129,8 @@ In resolve() we write logic to retrieve all books written by this author
   }
 }
 
+Now, we wrote the code to query all books and authors from DB
+
+
 
 
