@@ -28,7 +28,7 @@ const BookType = new GraphQLObjectType({
             type: AuthorType,
             resolve(parent, args){
                 console.log(parent); //Here parent is Book
-                //return _.find(authors, {id: parent.authorId})
+                return Author.findById(parent.authorId)
                 //Return author details based on authorId
             }
         }
@@ -47,7 +47,7 @@ const AuthorType = new GraphQLObjectType({
             type: new GraphQLList(BookType),
             resolve(parent, args){
                 //I want to query all books written by this author
-                //return _.filter(books, {authorId: parent.id});
+                return Book.find({authorId: parent.id});
             }
         }
     })
@@ -67,8 +67,7 @@ const RootQuery = new GraphQLObjectType({
             args: {id: {type: GraphQLID}}, //When user tries to access a particular book, he must pass the Id along it
             resolve(parent, args){
                 //Below code will fetch a book based on Id
-                //Lodash helps in writing minimal code
-                //return _.find(books, {id: args.id});
+                return Book.findById(args.id);
             }
         },
 
@@ -76,21 +75,22 @@ const RootQuery = new GraphQLObjectType({
             type: AuthorType,
             args: {id: {type: GraphQLID}},
             resolve(parent, args){
-                //return _.find(authors, {id: args.id});
+                return Author.findById(args.id);
             }
         },
 
         books: {
             type: new GraphQLList(BookType),
             resolve(parent, args){
-                //return books;
+                //Empty object retrieves all books
+                return Book.find({});
             }
         },
 
         authors: {
             type: new GraphQLList(AuthorType),
             resolve(parent, args){
-                //return authors;
+                return Author.find({})
             }
         }
 

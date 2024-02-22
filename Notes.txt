@@ -201,7 +201,64 @@ Output:
     }
   }
 }
+--------------------------------------------------------------------------
+Here, we updated the resolve() methods for all
+To fetch data via Mongoose functions from MongoDB
 
+Tested all fetch queries in GraphiQL
+
+For instance: 
+I want to get all books,
+written by an author 
+who wrote a book who's Id can give as a user
+-----------------------------------------
+Input:
+{
+  book(id: "65d7246b6635c80531f3510e"){
+    name
+    genre
+    author{
+      name
+      age
+      books {
+        name
+        genre
+      }
+    }
+  }
+}
+----------------
+Output:
+{
+  "data": {
+    "book": {
+      "name": "Darkness",
+      "genre": "Thriller",
+      "author": {
+        "name": "Atharva K",
+        "age": 34,
+        "books": [
+          {
+            "name": "Cindrella",
+            "genre": "Fantasy"
+          },
+          {
+            "name": "Darkness",
+            "genre": "Thriller"
+          }
+        ]
+      }
+    }
+  }
+}
+-------------------------
+Now compare
+In Rest Crud operations 
+We need to first get author Id from book Id
+Send another request to fetch books based on current author Id.
+In short, it would have taken 2 trips
+But GraphQL, did this in one trip
+-----------------------------------
 
 
 
