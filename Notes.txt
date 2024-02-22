@@ -260,6 +260,11 @@ In short, it would have taken 2 trips
 But GraphQL, did this in one trip
 -----------------------------------
 
+GraphQLNonNull property makes it compulsory to user
+to provide certain fields (its like the required attribute in <input> tag)
+Otherwise
+User can save an author with no name, just age and vice versa.
+Similarly for the books.
 
 
 
