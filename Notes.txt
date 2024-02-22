@@ -152,7 +152,35 @@ Define schema for Book and Author and export them.
 Delete dummy data amd comment out resolve logic for all.
 
 Import models in schema.js 
+--------------------------------------------------------------------------
 
+Mutations in GraphQL
+----------------------
+They allow us to mutate/change our data (add,delete,update)
+via GraphQL
+
+In Mutation, we define the functions through which user can edit/add/delete MongoDB data.
+We write the logic of mutation in resolve()
+
+Test the mutation on GraphiQL:
+Input:
+mutation {
+  addAuthor(name:"Alex P", age: 58) {
+    name
+    age
+  }
+}
+-----------------
+Output:
+{
+  "data": {
+    "addAuthor": {
+      "name": "Alex P",
+      "age": 58
+    }
+  }
+}
+Now check on MongoDB Atlas, you will find new entry in Authors Collection
 
 
 

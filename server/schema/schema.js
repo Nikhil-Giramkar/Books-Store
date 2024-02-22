@@ -97,8 +97,34 @@ const RootQuery = new GraphQLObjectType({
     }
 })
 
+
+const Mutation = new GraphQLObjectType({
+    name: "Mutation",
+    fields: {
+        addAuthor : {
+            type: AuthorType,
+            args: {
+                name: {type: GraphQLString},
+                age: {type: GraphQLInt}
+            },
+            resolve(parent, args){
+                //We need to add the new author in MongoDB
+                //So we will create an instance of Model defined for MongoDB
+                const newAuthor = new Author({
+                    name: args.name,
+                    age: args.age
+                });
+
+                //This will automatically save the newly created author in Mongo DB
+                return newAuthor.save();
+            }
+        }
+    }
+})
+
 //We need to export the schema 
 //Exporting RootType to outer world, to access graphQL
 module.exports = new GraphQLSchema({
-    query: RootQuery
+    query: RootQuery,
+    mutation: Mutation
 })
