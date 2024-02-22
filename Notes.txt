@@ -180,7 +180,27 @@ Output:
     }
   }
 }
-Now check on MongoDB Atlas, you will find new entry in Authors Collection
+Now check on MongoDB Atlas, you will find new entry in Authors Collection.
+
+Similarly we add a mutation to Add a book.
+Input:
+mutation {
+  addBook(name: "Shaun the Sheep", genre: "Comic", authorId: "65d71f1022130f2ae0ee7ec8") {
+    name
+    genre
+    authorId
+  }
+}
+---------------
+Output:
+{
+  "data": {
+    "addBook": {
+      "name": "Shaun the Sheep",
+      "genre": "Comic",
+    }
+  }
+}
 
 
 

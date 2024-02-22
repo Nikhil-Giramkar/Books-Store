@@ -22,8 +22,8 @@ const BookType = new GraphQLObjectType({
     fields: () => ({ //We ned to wrap all props of the obeject in function called fields
         id: {type: GraphQLID},
         name: {type: GraphQLString},
-        genre: {type: GraphQLString},
-
+        genre: {type: GraphQLString},    
+            
         author: {
             type: AuthorType,
             resolve(parent, args){
@@ -117,6 +117,23 @@ const Mutation = new GraphQLObjectType({
 
                 //This will automatically save the newly created author in Mongo DB
                 return newAuthor.save();
+            }
+        },
+        addBook: {
+            type: BookType,
+            args: {
+                name: {type: GraphQLString},
+                genre: {type: GraphQLString},
+                authorId: {type: GraphQLID}
+            },
+            resolve(parent, args){
+                const newBook = new Book({
+                    name: args.name,
+                    genre: args.genre,
+                    authorId: args.authorId
+                });
+
+                return newBook.save();
             }
         }
     }
