@@ -6,13 +6,17 @@ const {
     GraphQLString, 
     GraphQLSchema,
     GraphQLID,
-    GraphQLInt} = graphql
+    GraphQLInt,
+    GraphQLList} = graphql
 
 //Dummy Data
 var books = [
     {id:"1", name:"IronMan", genre: "Sci-Fi", authorId: "1"},
     {id:"2", name:"Cindrella", genre: "Fantasy", authorId: "2"},
     {id:"3", name:"Finding Nemo", genre: "Fantasy", authorId: "3"},
+    {id:"4", name:"Ra One", genre: "Sci Fi", authorId: "2"},
+    {id:"5", name:"Goblin", genre: "Drama", authorId: "1"},
+    {id:"6", name:"Five Pointer", genre: "Drama", authorId: "3"},
 ]
 
 var authors = [
@@ -51,7 +55,15 @@ const AuthorType = new GraphQLObjectType({
     fields: ()=> ({
         id: {type: GraphQLID},
         name: {type: GraphQLString},
-        age: {type: GraphQLInt}
+        age: {type: GraphQLInt},
+
+        books: {
+            type: new GraphQLList(BookType),
+            resolve(parent, args){
+                //I want to query all books written by this author
+                return _.filter(books, {authorId: parent.id});
+            }
+        }
     })
 })
 

@@ -115,6 +115,19 @@ We included authorID field in our dummy data to show the mapping
 We wrote a resolve() inside author property in Book Type
 To query author details based on authorId present in current book
 
+Now, we established a property Books in authorType.
+This books is a GraphQLlist of BookType
+In resolve() we write logic to retrieve all books written by this author
+{
+  author(id:2){
+    name
+    age
+    books{
+      name
+      genre
+    }
+  }
+}
 
 
 
