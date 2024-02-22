@@ -2,7 +2,15 @@ const express = require("express");
 
 const {graphqlHTTP} = require("express-graphql")
 
-//import scema
+const dotenv = require('dotenv')
+dotenv.config({path: './config.env'});
+
+const connectDB = require("./db/conn");
+
+//Fetch PORT number from config file 
+const PORT = process.env.PORT
+
+//import schema
 const schema = require("./schema/schema")
 
 const app = express();
@@ -14,6 +22,8 @@ app.use("/graphql", graphqlHTTP({
     graphiql: true
 }));
 
-app.listen(4000, ()=>{
-    console.log("Listening at http://localhost:4000");
+connectDB().then(() =>{
+    app.listen(PORT, ()=>{
+        console.log(`ExpressJs listening at: http://localhost:${PORT}`);
+    })
 })

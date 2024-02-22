@@ -130,6 +130,22 @@ In resolve() we write logic to retrieve all books written by this author
 }
 
 Now, we wrote the code to query all books and authors from DB
+--------------------------------------------------------------------------
+
+Lets connect to MongoDB
+------------------------
+  npm install mongoose - To deal with MongoDB
+  nom install dotenv  - to store credentials in a file
+
+  Write DB connection string in config.env file and 
+  add this file to gitignore as it contains important credentials
+
+  Create a file which does DB Connection and once done 
+  Start listening at PORT
+  Put the Port No in config.env file as well.
+
+
+
 
 
 
