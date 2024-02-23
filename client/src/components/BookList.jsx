@@ -12,20 +12,29 @@ const getBooksQuery = gql`
 
 export const BookList = () => {
 
-    const {loading, error, data} = useQuery(getBooksQuery);
+    const { loading, error, data } = useQuery(getBooksQuery);
 
-    if (loading) return <p>Loading...</p>;
     if (error) return <p>Error : {error.message}</p>;
 
-    //Lets see what we get
-    console.log(data)
-    return (
-        <>
+    if (loading) {
+        return <p>Loading Books for you...</p>;
+    }
+    else {
+        //Lets see what we get
+        console.log(data)
+
+        return (
+
             <div>
                 <ul id="book-list">
-                    <li>Book Name</li>
+                    {data.books.map(book => (
+                        <div key={book.id}>
+                            <h2>{book.name}</h2>
+                            <h3>{book.genre}</h3>
+                        </div>
+                    ))}
                 </ul>
             </div>
-        </>
-    )
+        )
+    }
 }
