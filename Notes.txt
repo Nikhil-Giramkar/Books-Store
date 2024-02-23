@@ -265,7 +265,25 @@ to provide certain fields (its like the required attribute in <input> tag)
 Otherwise
 User can save an author with no name, just age and vice versa.
 Similarly for the books.
+--------------------------------------------------------------------------
 
+Now we have Express App and GraphQL Server ready.
+Which is hooked with MongoDB
+We are currently making queries via GraphiQL.
+
+But we need a UI/Frontend.
+So we use React library for fronend.
+To send GraphQL queries from frontend, we need a GraphQL client - Apollo
+
+Basically, we will cretae components to Get Book List, To add new Book, etc.
+These components will be binded with GraphQL quries by Apollo.
+Apollo renders queries and communicates with server.
+
+Create React App:
+  npm create vite@latest
+  Select React --> Javascript.
+  npm install
+  npm run dev
 
 
 
