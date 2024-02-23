@@ -1,43 +1,48 @@
 import { useLazyQuery } from "@apollo/client"
 import { getBookQuery } from "../queries/queries"
 import { useEffect } from "react"
+import { Resources } from "../Resources"
 
 // eslint-disable-next-line react/prop-types
-export const BookDetails = ({bookId}) => {
+export const BookDetails = ({ bookId }) => {
     console.log(bookId)
 
-    const [loadDetails,{loading, error, data}] = useLazyQuery(getBookQuery);
+    const [loadDetails, { loading, error, data }] = useLazyQuery(getBookQuery);
 
-    useEffect(()=>{
-        if(bookId){
+    useEffect(() => {
+        if (bookId) {
             loadDetails({
-                variables: {id: bookId},
+                variables: { id: bookId },
             })
         }
     }, [bookId])
-    
-    if(error)
-        return <p>Error! {error}</p>
-    if(!bookId)
-        return <p>Click a Book to see details</p>
-    if(loading)
-        return <p>Loading Book Details...</p>
-    if(data===undefined)
-        return <p>Data not fetched</p>
+
+
     return (
-        <>
-        <h1>Book Details Here</h1>
         <div id="book-details">
-            <h2>{data.book.name}</h2>
-            <p>{data.book.genre}</p>
-            <p>{data.book.author.name}</p>
-            <p>All books by this Author</p>
             {
-                data.book.author.books.map(item=>(
-                    <li key={item.id}>{item.name}</li>
-                ))
+            error ?
+                 <p>Error! {error}</p>
+            : !bookId ?
+                 <p>Click a Book to see details</p>
+            : loading ?
+                 <p>{Resources.LoadingBookDetails}</p>
+            : data === undefined ?
+                 <p>Data not fetched</p>
+            : <>
+                <h2>Book Details Here</h2>
+                <h2>{data.book.name}</h2>
+                <p>Genre : <b>{data.book.genre}</b></p>
+                <p>Author: <b>{data.book.author.name}</b></p>
+                <p>All books by {data.book.author.name}</p>
+                {
+                    data.book.author.books.map(item => (
+                        <li key={item.id}>{item.name}</li>
+                    ))
+                }
+            </>
             }
+            
         </div>
-        </>
     )
 }
