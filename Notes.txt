@@ -315,3 +315,12 @@ In a mutation, we must add query variables
 Else empty data is stored in DB.
 Hence, now we added query variables and their type.
 We added ! denoting mandatory field.
+--------------------------------------------------------------------------
+
+We see a refresh issue now, as soon as form is submitted
+Data is added to DB
+But
+We do not see updated list of books on UI.
+
+This can be handled by refetchQueries option in useMutation
+
