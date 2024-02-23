@@ -303,6 +303,6 @@ Once we install apollo client, we need to setup the client.
 We can use gql to write queries as we wrote in graphiql 
 Follow the docs: https://www.apollographql.com/docs/react/get-started
 
-
-
-
+We get an error: failed to fetch
+In console, we saw CORS error.
+Lets fix it on server side.
