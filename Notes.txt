@@ -323,4 +323,13 @@ But
 We do not see updated list of books on UI.
 
 This can be handled by refetchQueries option in useMutation
+--------------------------------------------------------------------------
+
+To Get detials of each bookWe first write the GraphQL query for it.
+Now we want to display book details, whenever user clicks on any book.
+
+For that we add onClick event listener to each book and maintain the state of book selected by user.
+
+This book's id is then passed as props to BookDetails Page.
+Where we can see book details.
 

@@ -27,4 +27,25 @@ mutation($name: String!, $genre: String!, $authorId: ID!){
 }
 `
 
+//Below query will get all books written by the author who wrote this book
+export const getBookQuery = gql`
+query($id: ID!){
+    book(id: $id){
+        id
+        name
+        genre
+        author{
+            name
+            age
+            id
+            books{
+                name
+                genre
+                id
+            }
+        }
+    }
+}
+`
+
 
