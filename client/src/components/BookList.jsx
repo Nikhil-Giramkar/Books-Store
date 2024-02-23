@@ -1,13 +1,6 @@
-import { gql, useQuery } from "@apollo/client"
-
-const getBooksQuery = gql`
-{
-    books{
-        name
-        id
-    }
-}
-`
+import { useQuery } from "@apollo/client"
+import { getBooksQuery } from "../queries/queries";
+import { Resources } from "../Resources";
 
 export const BookList = () => {
 
@@ -16,7 +9,7 @@ export const BookList = () => {
     if (error) return <p>Error : {error.message}</p>;
 
     if (loading) {
-        return <p>Loading Books for you...</p>;
+        return <p>{Resources.LoadingBooks}</p>;
     }
     else {
         //Lets see what we get
