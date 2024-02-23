@@ -284,6 +284,21 @@ Create React App:
   Select React --> Javascript.
   npm install
   npm run dev
+--------------------------------------------------------------------------
+Apollo Cliet Setup
+
+No matter what is our frontend, Angular/Vue/React
+We need to have a GraphQL Client to interact with GraphQl Server.
+
+
+Apollo will be the GraphQL client in our case for React.
+https://www.apollographql.com/docs/react/get-started
+
+Install:
+  npm install @apollo/client graphql
+
+Once we install apollo client, we need to setup the client.
+
 
 
 
