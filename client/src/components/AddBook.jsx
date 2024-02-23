@@ -1,5 +1,7 @@
 import { useState } from "react"
 import { AuthorsList } from "./AuthorsList"
+import { useMutation } from "@apollo/client"
+import { addBookMutation } from "../queries/queries"
 
 export const AddBook = () => {
 
@@ -12,17 +14,29 @@ export const AddBook = () => {
     const handleOnChange = (e) => {
         let name = e.target.name;
         let value = e.target.value;
-        
+
         setBook({
             ...book,
             [name]: value
         })
     }
 
+    const [addBookMutate] = useMutation(addBookMutation);
+
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(book);
+
+        addBookMutate({
+            variables: {
+                name: book.name,
+                genre: book.genre,
+                authorId: book.authorId
+            }
+        })
     }
+
+
 
     return (
         <>
