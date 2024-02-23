@@ -298,6 +298,10 @@ Install:
   npm install @apollo/client graphql
 
 Once we install apollo client, we need to setup the client.
+--------------------------------------------------------------------------
+
+We can use gql to write queries as we wrote in graphiql 
+Follow the docs: https://www.apollographql.com/docs/react/get-started
 
 
 
