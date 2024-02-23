@@ -4,7 +4,6 @@ const getBooksQuery = gql`
 {
     books{
         name
-        genre
         id
     }
 }
@@ -28,10 +27,9 @@ export const BookList = () => {
             <div>
                 <ul id="book-list">
                     {data.books.map(book => (
-                        <div key={book.id}>
+                        <li key={book.id}>
                             <h2>{book.name}</h2>
-                            <h3>{book.genre}</h3>
-                        </div>
+                        </li>
                     ))}
                 </ul>
             </div>
