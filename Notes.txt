@@ -306,3 +306,12 @@ Follow the docs: https://www.apollographql.com/docs/react/get-started
 We get an error: failed to fetch
 In console, we saw CORS error.
 Lets fix it on server side.
+--------------------------------------------------------------------------
+Till Now,
+Get Queries have been implemented and are working...
+
+Mutation query is binded to form submit
+In a mutation, we must add query variables
+Else empty data is stored in DB.
+Hence, now we added query variables and their type.
+We added ! denoting mandatory field.
