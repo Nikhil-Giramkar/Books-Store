@@ -15,7 +15,7 @@ export const BookDetails = ({ bookId }) => {
                 variables: { id: bookId },
             })
         }
-    }, [bookId])
+    }, [bookId, loadDetails])
 
 
     return (
@@ -24,20 +24,21 @@ export const BookDetails = ({ bookId }) => {
             error ?
                  <p>Error! {error}</p>
             : !bookId ?
-                 <p>Click a Book to see details</p>
+                 <p>{Resources.SeeDetailsLabel}</p>
             : loading ?
                  <p>{Resources.LoadingBookDetails}</p>
-            : data === undefined ?
-                 <p>Data not fetched</p>
+            : data===undefined ?
+                <p>Data Not Loaded</p>
             : <>
-                <h2>Book Details Here</h2>
+                <h2><u>{Resources.BookDetailsHeading}</u></h2>
+
                 <h2>{data.book.name}</h2>
                 <p>Genre : <b>{data.book.genre}</b></p>
                 <p>Author: <b>{data.book.author.name}</b></p>
                 <p>All books by {data.book.author.name}</p>
                 {
                     data.book.author.books.map(item => (
-                        <li key={item.id}>{item.name}</li>
+                        <li key={item.id}>{item.name} - {item.genre}</li>
                     ))
                 }
             </>
