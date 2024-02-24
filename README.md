@@ -1,4 +1,4 @@
-# Books-Store
+# Books-via-GraphQL
 <li>A simple book store which displays list of books.</li>
 <li>Users can add new books and associate them with authors present in database.</li>
 <li>On clicking any book, users can view details of current book, its author and all other books written by same author.</li>
