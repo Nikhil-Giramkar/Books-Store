@@ -22,7 +22,7 @@
 ![Screenshot (218)](https://github.com/Nikhil-Giramkar/Books-Store/assets/58767494/9b36988c-4278-49de-84ed-2c667b0285c3)
 <hr/>
 
-<h3>Displaying book details, author name and all books by that author using GraphQL</h3>
+<h3>Displaying book details, author name and all books by that author - all of this via single GraphQL query</h3>
 
 ![Screenshot (219)](https://github.com/Nikhil-Giramkar/Books-Store/assets/58767494/34df97ba-5914-43ce-a404-48361179bd1a)
 
